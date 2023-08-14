@@ -1,0 +1,8 @@
+label-studio
+label-studio-sdk
+openai==0.27.8
+gradio==3.39.0
+langchain
+chromadb
+tiktoken
+GitPython
