@@ -9,6 +9,10 @@ For more details, consult [From Foundation Models to Fine-Tuned Applications
 Using Label Studio](https://labelstud.io/blog/from-foundation-models-to-fine-tuned-applications-using-label-studio)
 on the Label Studio blog.
 
+<p align="center">
+	<img src='images/chat_ls_image.png' width='800' title='Pachyderm'>
+</p>
+
 ## Code Overview
 
 1. **build_doc_db.py**: A script to clone the Label Studio documentation, split
