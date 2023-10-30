@@ -9,20 +9,35 @@ from langchain.vectorstores import Chroma
 
 
 def main(repo_path, repo_url, persist_directory):
+
     if not os.path.exists(repo_path):
-        repo = Repo.clone_from(repo_url, to_path=repo_path)
+        print("Cloning %s into %s" % (repo_url, repo_path))
+        repo = Repo.clone_from(
+                repo_url,
+                to_path=repo_path)
     else:
         repo = Repo(repo_path)
     
     branch = repo.head.reference
-    loader = GitLoader(repo_path=repo_path, branch=branch, file_filter=lambda f: f.endswith('.md'))
 
+    print("Loading repository document data.")
+    loader = GitLoader(
+            repo_path=repo_path,
+            branch=branch,
+            file_filter=lambda f: f.endswith('.md'))
     data = loader.load()
 
-    text_splitter = MarkdownTextSplitter(chunk_size=500, chunk_overlap=0)
+    print("Splitting repository documents into chunks of 500")
+    text_splitter = MarkdownTextSplitter(
+            chunk_size=500,
+            chunk_overlap=0)
     all_splits = text_splitter.split_documents(data)
 
-    vectorstore = Chroma.from_documents(documents=all_splits, embedding=OpenAIEmbeddings(), persist_directory=persist_directory)
+    print("Computing and loading OpenAI embeddings into Chroma vectorstore.")
+    vectorstore = Chroma.from_documents(
+            documents=all_splits,
+            embedding=OpenAIEmbeddings(),
+            persist_directory=persist_directory)
     vectorstore.persist()
 
 if __name__ == "__main__":
