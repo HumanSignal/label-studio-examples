@@ -25,8 +25,10 @@ whenever a QA operation is executed.
 
 3. **chatbot.py**: Incorporates the LabelStudioCallbackHandler into the QA
 system, initializes the QA chain, and provides a chat interface using Gradio.
+The **simple_chatbot.py** and **advanced_chatbot.py** demonstrate a chatbot
+without RAG or feedback, and a chatbot with RAG only.
 
-4. **extract_good_examples.py**: A script to extract examples labeled 'good'
+4. **add_documents.py**: A script to extract examples labeled 'good'
 from a JSONL file exported from Label Studio and add them to an existing vector
 database.
 
@@ -150,7 +152,7 @@ data with Label Studio, we can export it as a JSON file.
 database:
 
 ```bash
-python extract_good_examples.py \
+python add_documents.py \
     --json_path PATH_TO_YOUR_JSON_FILE \
     --persist_dir VECTORDB_PERSIST_DIRECTORY
 ```
