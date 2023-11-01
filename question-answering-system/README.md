@@ -41,12 +41,14 @@ database.
 pip install -r requirements.txt
 ```
 
-Having troubles installing with pip? It might be because your platform
-isn't compatible with the latest version of Label Studio (you will need
-at a minimum 1.9.0). To workaround this, we suggest
-[installing Label Studio with Docker](https://labelstud.io/guide/install.html#Install-with-Docker),
-removing the Label Studio dependency in requirements.txt, and running the
-`pip install` command again.
+Having troubles installing with pip? It might be because your platform isn't
+compatible with the latest version of Label Studio (you will need at a minimum
+1.9.0). To workaround this, we suggest [installing Label Studio with
+Docker](https://labelstud.io/guide/install.html#Install-with-Docker), removing
+the Label Studio dependency in requirements.txt, and running the `pip install`
+command again. As another alternative, you can also run [Label Studio in
+Hugging Face Spaces](https://huggingface.co/new-space?template=LabelStudio/LabelStudio).
+Details about Label Studio in Hugging Face can be found in this [blog post](https://labelstud.io/blog/introduction-to-label-studio-in-hugging-face-spaces/).
 
 4. Set your OpenAI API key as an environment variable. If you don't have one,
 you can [create one here](https://platform.openai.com/account/api-keys). 
