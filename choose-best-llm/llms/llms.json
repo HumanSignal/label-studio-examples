@@ -1,0 +1,10 @@
+{
+  "codegemma": "https://codegemma-7b-it-inf-workshop.dev.heartex.com",
+  "codellama": "https://codellama-7b-hf-inf-workshop.dev.heartex.com",
+  "deepseek": "https://deepseek-coder-6-7b-it-inf-workshop.dev.heartex.com",
+  "gemma": "https://gemma-7b-it-inf-workshop.dev.heartex.com",
+  "meta-llama": "https://meta-llama-3-8b-it-inf-workshop.dev.heartex.com",
+  "mistral": "https://mistral-7b-it-inf-workshop.dev.heartex.com",
+  "qwen2": "https://qwen2-7b-it-inf-workshop.dev.heartex.com",
+  "stablelm": "https://stablelm-2-1-6b-inf-workshop.dev.heartex.com"
+}
