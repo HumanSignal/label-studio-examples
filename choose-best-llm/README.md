@@ -20,7 +20,14 @@ pip install label-studio
 
 2. Create a new Label Studio project by clicking on `Create` -> `Save`.
 
-3. Import tasks from [tasks.json](tasks.json) file.
+3. Import tasks from [tasks.json](tasks.json) file. It contains hundreds of transcribed invoices, where each task represents a single invoice:
+```json
+{
+  "doc": "invoice_1.jpg",
+  "text": "transcribed text of the invoice",
+  "lang": "en"
+}
+```
 
 4. Now configure your labeling UI in project `Settings > Labeling Interface > Code` with [structured_output_config.xml](structured_output_config.xml). It contains the following components:
 
