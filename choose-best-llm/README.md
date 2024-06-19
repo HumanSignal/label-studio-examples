@@ -18,7 +18,9 @@ pip install label-studio
 
 2. Create a new Label Studio project by clicking on `Create` -> `Save`.
 
-3. Now configure your labeling UI in project `Settings > Labeling Interface > Code` with [structured_output_config.xml](structured_output_config.xml). It contains the following components:
+3. Import tasks from [tasks.json](tasks.json) file.
+
+4. Now configure your labeling UI in project `Settings > Labeling Interface > Code` with [structured_output_config.xml](structured_output_config.xml). It contains the following components:
 
 
 **Classification task:**
@@ -96,20 +98,60 @@ First make sure you have [sglang server](https://github.com/sgl-project/sglang) 
 Provide this setup in  [./llms/llms.json](llms/llms.json) file.
 
 ### Start the LLM server:
-    ```bash
-    label-studio-ml start llms
-    ```
+```bash
+label-studio-ml start llms
+```
+
+or using docker
+```bash
+docker-compose up
+```
    
 ### Export the LLM server URL:
 
-If you connect to external Label Studio, use `ngrok` to expose the server to the internet:
+If you connect to external Label Studio, use [`ngrok`](https://ngrok.com/) to expose the server to the internet:
 
-    ```bash
-    ngrok http 9090
-    ```
-   and grab the URL to connect to the server, e.g. `https://<your-ngrok-id>.ngrok-free.app/`
+```bash
+ngrok http 9090
+```
+
+and grab the URL to connect to the server, e.g. `https://<your-ngrok-id>.ngrok-free.app/`
 
 Check you can access the server by opening the URL in your browser.
-   
 
 
+### Connect the LLM server to Label Studio:
+
+Go to project `Settings > Model` and **Add Model** with the required URL.
+
+### Start labeling
+
+When you click on `Label All Tasks`, it automatically compares your annotation with LLMs' predictions.
+
+## Display Evaluation Metrics
+
+### Install prerequisites:
+
+```bash
+pip install -r dashboard_server/requirements.txt
+```
+
+### Run evaluation script
+
+```bash
+python dashboard_server/get_stats.py
+```
+
+#### Start the dashboard server:
+
+```bash
+uvicorn server:app --reload --port 4321
+```
+
+Make sure you have the server running and accessible at `http://localhost:4321/`. Expose it to the internet using [`ngrok`](https://ngrok.com/) if needed.
+
+### Connect the dashboard to Label Studio:
+
+Go to project `Settings > Webhooks` and add a new webhook with the URL of the dashboard server, e.g. `http://<your-dashboard-server>.ngrok.io/webhook`.
+
+Now you can see the evaluation metrics in the dashboard. Every time you submit the annotation, the dashboard will update the metrics.
