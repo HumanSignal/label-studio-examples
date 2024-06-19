@@ -2,10 +2,12 @@
 
 Code for the workshop "Choosing the Best Open Source LLM for Your Application" at the 2024 AI_dev summit.
 
-Explore demo instance: [https://ls-workshop.dev.heartex.com/](https://ls-workshop.dev.heartex.com/user/signup/?token=6QxZ0zBQiXbU8bMLu0I26wvtM8YgQZ5RIUlzqvP9)
+* Presentation: https://docs.google.com/presentation/d/1Zf9PJ1isptm-s-4UjgZ8016VbCr65ZTdOPsc1BtxxaE/edit?usp=sharing
+
+* Explore demo instance: [https://ls-workshop.dev.heartex.com/](https://ls-workshop.dev.heartex.com/user/signup/?token=6QxZ0zBQiXbU8bMLu0I26wvtM8YgQZ5RIUlzqvP9)
 
 
-or follow the steps bellow to install your own instance:
+or follow along the steps bellow to install your own instance:
 
 
 ## Create the evaluation UI with Label Studio
