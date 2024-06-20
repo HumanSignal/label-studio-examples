@@ -5,7 +5,6 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from jinja2 import Template
 import plotly.graph_objects as go
-import plotly.io as pio
 import plotly.express as px
 from pydantic import BaseModel
 from typing import Dict
@@ -67,6 +66,25 @@ html_template = Template("""
             margin: 5px 0;
         }
     </style>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const plotElement = entry.target;
+                        const plotData = JSON.parse(plotElement.getAttribute('data-plot'));
+                        Plotly.newPlot(plotElement, plotData.data, plotData.layout);
+                        observer.unobserve(plotElement);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.plotly-plot').forEach(plotElement => {
+                observer.observe(plotElement);
+            });
+        });
+    </script>
 </head>
 <body>
     {% for row in charts %}
@@ -76,7 +94,7 @@ html_template = Template("""
             {% for plot in row.plots %}
             <div class="chart">
                 <div class="chart-caption">{{ plot.caption }}</div>
-                <div>{{ plot.html | safe }}</div>
+                <div class="plotly-plot" data-plot='{{ plot.json | safe }}' style="height: 400px;"></div>
             </div>
             {% endfor %}
         </div>
@@ -97,9 +115,9 @@ def create_bar_chart(data):
         y=values,
         marker_color=colors[:len(names)]  # Cycle through the color list
     ))
-    fig.update_layout(margin=dict(l=20, r=20, t=20, b=20))
+    fig.update_layout(margin=dict(l=20, r=20, t=20, b=20), xaxis=dict(tickfont=dict(size=20)))
 
-    return pio.to_html(fig, full_html=False)
+    return json.dumps(fig.to_plotly_json())
 
 
 def _load_stats() -> Dict:
@@ -141,8 +159,8 @@ def index():
     for project_title, project_data in sorted(stats.items()):
         row = {'name': f'Project: {project_title}', 'plots': []}
         for tag_name, tag_data in sorted(project_data.items()):
-            html = create_bar_chart(tag_data)
-            row['plots'].append({'caption': tag_name, 'html': html})
+            json_plot = create_bar_chart(tag_data)
+            row['plots'].append({'caption': tag_name, 'json': json_plot})
         charts.append(row)
 
     return html_template.render(charts=charts)

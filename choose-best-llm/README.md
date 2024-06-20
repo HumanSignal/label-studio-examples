@@ -9,6 +9,10 @@ Code for the workshop "Choosing the Best Open Source LLM for Your Application" a
 
 or follow along the steps bellow to install your own instance:
 
+```bash
+git clone https://github.com/HumanSignal/label-studio-examples.git
+```
+
 
 ## Create the evaluation UI with Label Studio
 
