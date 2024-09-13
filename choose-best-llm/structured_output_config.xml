@@ -1,0 +1,78 @@
+<View>
+    <Style>
+        .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        }
+
+        .page {
+        width: 600px;
+        height: auto;
+        }
+
+        .blocks {
+        width: calc(100% - 220px);
+        height: 600px;
+        overflow-y: scroll;
+        }
+
+        .block {
+        background-color: #f0f0f0;
+        padding: 20px;
+        margin: 10px;
+        }
+
+
+    </Style>
+    <View className="container">
+        <View className="blocks">
+            <View className="block">
+                <Header value="Invoice category:"/>
+                <Choices name="invoice_category" toName="doc" layout="select"
+                         prompt="Provide the invoice category.">
+                    <Choice value="Groceries"/>
+                    <Choice value="Cafés/Coffeeshops"/>
+                    <Choice value="Dining/Restaurants"/>
+                    <Choice value="Clothing/Apparel"/>
+                    <Choice value="Electronics"/>
+                    <Choice value="Home Improvement"/>
+                    <Choice value="Health/Pharmacy"/>
+                    <Choice value="Gasoline/Fuel"/>
+                    <Choice value="Transportation/Travel"/>
+                    <Choice value="Entertainment/Leisure"/>
+                    <Choice value="Utilities/Bills"/>
+                    <Choice value="Insurance"/>
+                    <Choice value="Gifts/Donations"/>
+                    <Choice value="Personal Care"/>
+                    <Choice value="Education/Books"/>
+                    <Choice value="Professional Services"/>
+                    <Choice value="Membership/Subscriptions"/>
+                    <Choice value="Taxes"/>
+                    <Choice value="Vehicle Maintenance/Repairs"/>
+                    <Choice value="Pet Care"/>
+                    <Choice value="Home Furnishings/Decor"/>
+                    <Choice value="Other"/>
+                </Choices>
+            </View>
+            <View className="block">
+                <Header value="Invoice date:"/>
+                <DateTime name="invoice_date" toName="doc" only="date"
+                          prompt="Extract the invoice date."/>
+            </View>
+            <View className="block">
+                <Header value="Store name:"/>
+                <TextArea name="store_name" toName="doc" maxSubmissions="1" editable="true" showSubmitButton="false"
+                          prompt="Extract the store name."/>
+            </View>
+            <View className="block">
+                <Header value="Total amount:"/>
+                <Number name="total_amount" toName="doc" slider="true"
+                        prompt="Calculate the total amount paid."/>
+            </View>
+        </View>
+        <View className="page">
+            <Image name="doc" value="$doc"/>
+        </View>
+    </View>
+</View>
