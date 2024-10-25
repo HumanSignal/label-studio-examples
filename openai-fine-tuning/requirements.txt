@@ -7,3 +7,4 @@ tiktoken
 tqdm
 requests
 pydantic
+label-studio-sdk
