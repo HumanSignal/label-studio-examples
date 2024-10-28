@@ -1,0 +1,10 @@
+openai>=1.0.0
+jupyter
+numpy
+pandas
+matplotlib
+tiktoken
+tqdm
+requests
+pydantic
+label-studio-sdk
