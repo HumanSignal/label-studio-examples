@@ -1,0 +1,3 @@
+aiosmtpd==1.4.6
+label-studio==1.14.0
+label-studio-sdk==1.0.7
