@@ -17,5 +17,5 @@ your production  models for quality and drift.
 in the file to properly build this out, but the important thing is that the `scrape()` method returns 
 a list of dictionaries, where the keys map to your fields for data import as specified in your `labeling_config`
 AND one of the fields is "date" if `sample_by_date` is TRUE in your config.ini 
-6. Run `monitor_project_with_ls.py` as the main file. We reccomend doing this as a weekly chron job, 
+6. Run `monitor_project_with_label_studio.py` as the main file. We reccomend doing this as a weekly chron job, 
 so that you can constantly monitor your production projects! 
