@@ -32,15 +32,11 @@ def scrape(logs_username: str, logs_password: str, logs_bucket:str, total_to_ext
              key_date = key.split(".")[0]
              key_date = key_date.split("_")[1]
              key_date = datetime.strptime(key_date, '%m:%d:%y').date()
-             print(key_date, end, start)
              if key_date <= end and key_date >= start:
                  body = s3_file.get()['Body'].read().decode("utf-8")
         #         # the scrape file method does the file processing.
                  all_data.extend(scrape_file(body))
 
-    # with open('qalogs_11:12:24.txt', mode='r') as f:
-    #     lines = f.read()
-    #     all_data.extend(scrape_file(lines))
     subset_data = get_data_subset(all_data, total_to_extract, sample_by_date)
     return subset_data
 
