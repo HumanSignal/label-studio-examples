@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+# Path to exported json data from Label Studio
+# Example export: ./ls_data.json
 exported_data_path = Path( ".", 'ls_data.json')
 
 with exported_data_path.open(mode='r') as f:

@@ -50,12 +50,10 @@ def scrape_file(body):
         for line in body.split('\n'):
             if "Timestamp" in line:
                 if curr_data:
-                    print(curr_data)
                     all_data.append(curr_data)
                     curr_data = {}
                 line = line.split(' ')
                 date = line[1]
-                print(f'date {date}')
                 curr_data["date"] = date
             if "User Input" in line:
                 line = line.split('User Input: ')
