@@ -1,7 +1,9 @@
-from label_studio_sdk.label_interface import LabelInterface
-from label_studio_sdk.client import LabelStudio
-
+import json
+import logging
 from configparser import ConfigParser
+
+from label_studio_sdk.client import LabelStudio
+from label_studio_sdk.label_interface import LabelInterface
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -28,8 +30,7 @@ else:
     raise Exception("Config[\"labelstudio\"] must have either the LabelStudioProjectID or the LablingConfig!")
 
 li = LabelInterface(label_config)
-region = li.get_tag("chc").label("one")
 
-# returns a JSON representing a Label Studio region
-print(region.as_json())
-
+sample_pred = li.generate_sample_prediction()
+sample_pred = json.dumps(sample_pred, indent=4)
+print(sample_pred)
