@@ -88,7 +88,7 @@ class Monitor:
 
             # Figuring out the structure of the PredictionValue can be challenging.
             # Please refer to 'utils.py' to use the sdk to generate an example of the PredictionValue
-            # Format for your project
+            # format for your project
             prediction = PredictionValue(
                 model_version=task["model_version"],
                 result=[
