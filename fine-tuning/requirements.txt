@@ -1,0 +1,4 @@
+datasets==2.18.0
+label-studio
+label-studio-sdk
+openai
