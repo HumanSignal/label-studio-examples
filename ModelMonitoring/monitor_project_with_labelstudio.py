@@ -85,6 +85,10 @@ class Monitor:
             }
             t = self.ls.tasks.create(project=self.project.id, **task_data)
             task_id = t.id
+
+            # Figuring out the structure of the PredictionValue can be challenging.
+            # Please refer to 'utils.py' to use the sdk to generate an example of the PredictionValue
+            # Format for your project
             prediction = PredictionValue(
                 model_version=task["model_version"],
                 result=[
