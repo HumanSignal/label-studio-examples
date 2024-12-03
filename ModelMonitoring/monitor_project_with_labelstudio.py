@@ -27,7 +27,7 @@ class Monitor:
         self.logs_password = logs_password
         self.logs_bucket = logs_bucket
         self.email_sender = email_sender
-        self.email_recipeint = email_recipient
+        self.email_recipient = email_recipient
         self.smtp_server = smtp_server
         self.smtp_port = smtp_port
         self.email_password = email_password
@@ -66,10 +66,10 @@ class Monitor:
         msg = MIMEText(f"Your project, {self.project.title} has been created in your LabelStudio instance {self.label_studio_url}. Check it out now!")
         msg["Subject"] = "New LabelStudio Project Alert"
         msg["From"] = self.email_sender
-        msg["To"] = self.email_recipeint
+        msg["To"] = self.email_recipient
         with smtplib.SMTP_SSL(self.smtp_server, self.smtp_port) as server:
             server.login(self.email_sender, self.email_password)
-            server.sendmail(self.email_sender, self.email_recipeint.split(','), msg.as_string())
+            server.sendmail(self.email_sender, self.email_recipient.split(','), msg.as_string())
 
         logger.info("Email notification sent! ")
     def monitor(self):
@@ -105,7 +105,8 @@ class Monitor:
             self.ls.predictions.create(task=task_id, **prediction.model_dump())
             logger.info("Uploaded task to LS")
 
-        self.send_email()
+        if self.email_sender and self.email_recipient and self.email_password:
+            self.send_email()
 
 
 if __name__ == "__main__":
