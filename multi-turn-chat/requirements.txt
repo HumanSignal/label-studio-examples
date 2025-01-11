@@ -1,1 +1,2 @@
 label-studio-sdk
+pandas
