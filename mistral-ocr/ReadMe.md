@@ -11,10 +11,11 @@ Label Studio for easy evaluation.
 ## Prerequisites 
 You'll need to have the following to run this repo: 
 1. Label Studio running, with an account that you can get the token for. 
+  To install Label Studio, simply run:
+  ```
+  pip install label-studio
+  ```
 
-To install Label Studio, simply run:
-
-`pip install label-studio`
 2. A MistralAI account and API key. To create an account, click [here](console.mistral.ai).
 Then, go to the API keys page and create a new key by clicking "Create new key". Make
 sure to copy this, as it won't be available after you close the window! 
