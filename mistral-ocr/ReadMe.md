@@ -1,6 +1,5 @@
 # Using Label Studio to Evaluate MistralOCR 
-Mistral released a new OCR model, that works well on 
-images and PDFs alike, but how do you know how well it's really doing? 
+[Label Studio](labelstud.io) allows you to evaluate and correct mistral output.
 
 ![Labeling_Screen.png](Labeling_Screen.png)
 
@@ -12,7 +11,10 @@ Label Studio for easy evaluation.
 ## Prerequisites 
 You'll need to have the following to run this repo: 
 1. Label Studio running, with an account that you can get the token for. 
-For instillation instructions, see [the label studio documentation](labelstud.io)
+
+To install Label Studio, simply run:
+
+`pip install label-studio`
 2. A MistralAI account and API key. To create an account, click [here](console.mistral.ai).
 Then, go to the API keys page and create a new key by clicking "Create new key". Make
 sure to copy this, as it won't be available after you close the window! 
