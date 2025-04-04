@@ -1,0 +1,6 @@
+pandas>=2.2.3
+numpy>=1.26.0
+datasets>=2.18.0
+matplotlib
+seaborn
+label-studio-sdk>=1.0.7
