@@ -1,0 +1,27 @@
+<View>
+  <ParagraphLabels name="NER" toName="chat"> 
+    <Label value="drug" />
+    <Label value="symptom" />
+    <Label value="body part" />
+  </ParagraphLabels>
+  <Paragraphs name="chat" value="$conversation" layout="dialogue" />
+
+  <Header value="Does the Doctor have good bedside manner?"/>
+  <Choices name="bedside" toName="chat">
+    <Choice value="yes" />
+    <Choice value="no" />
+  </Choices>
+
+  <TextArea name="good_bedside" toName="chat" placeholder="Provide examples of good bedside manner" />
+ 
+ <TextArea name="bad_bedside" toName="chat" placeholder="Provide examples of poor bedside manner" />
+  
+  <Header value="Summarize the Patient's symptoms"/>
+  <TextArea name="symptoms" toName="chat" />
+
+  <Header value="Summarize the Doctor's recommended treatment plan"/>
+  <TextArea name="treatment" toName="chat" />
+
+  
+</View>
+
