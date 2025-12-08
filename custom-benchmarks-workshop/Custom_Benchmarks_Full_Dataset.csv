@@ -1,0 +1,304 @@
+question_id,question,response_askai,response_chatgpt,response_claude,criteria1,criteria2,criteria3
+1,How can I import data to my project?,"You can import data either via the UI or programmatically. In the UI, open the Data Manager and click the “Import” button to upload files or specify a URL. Alternatively, use the Label Studio SDK’s import_tasks() method or the REST API endpoint (/api/projects/{id}/import) to import data.
+
+You can also connect to cloud storage and sync data into Label Studio.
+
+**Further information**
+1. [Importing tasks guide](https://docs.humansignal.com/guide/tasks.html)
+2. [Label Studio API import endpoint](https://labelstud.io/api#operation/api_projects_import_create)
+3. [LS SDK import example](https://github.com/HumanSignal/label-studio-sdk/tree/master/examples/import_data/import_from_json.md)
+4. [Cloud storages](https://docs.humansignal.com/guide/storage)","To import data:
+
+1. Open your project → **Data Import**.
+2. Upload files or connect cloud storage.
+3. Click **Import**.
+
+Using the SDK:
+
+```python
+from label_studio_sdk import LabelStudio
+ls = LabelStudio(base_url=URL, api_key=KEY)
+ls.project.import_data(PROJECT_ID, tasks=[{""text"": ""Example""}])
+```
+
+**Further information**  
+1. https://docs.humansignal.com/guide/import  
+2. https://labelstud.io/sdk
+","To import data to your project:
+
+1. Open your project and click the **Import** button.
+2. Choose your import method: upload files (images, text, CSV, JSON) or connect cloud storage.
+3. Select your files or configure your storage connection.
+4. Click **Import** to add tasks to your project.
+
+You can also automate this via the SDK:
+
+```python
+from label_studio_sdk import LabelStudio
+ls = LabelStudio(base_url=URL, api_key=KEY)
+ls.project.import_tasks(project_id, tasks)
+```
+
+**Further information**
+1. [Import data](https://docs.humansignal.com/guide/tasks)
+2. [Cloud storage setup](https://docs.humansignal.com/guide/storage)
+3. [Label Studio SDK](https://labelstud.io/sdk)","Mentions data import can be done with the ""Import"" button in the Data Manager page. Also mentions data can be synced via cloud storage. (Points: 10)","Provides this link to relevant documentation: ""https://docs.humansignal.com/guide/tasks.html"" (Points: 5)",Provides a broken link or non-existant page. (Points: -5)
+2,How can I invite people to my organization?,"You can invite people by opening your Organization page (via the hamburger menu) and clicking **Invite Members**. Then, either copy your unique invite link to share with new users or send them an email invite directly. After they sign up, assign them a role to activate their access.
+
+**Further information**  
+1. [Add and invite users to Label Studio Enterprise](https://docs.humansignal.com/guide/admin_user.html)  
+2. [Sign up guide](https://docs.humansignal.com/guide/signup.html)","To invite people:
+
+1. Go to **Organization → People**.
+2. Click **Invite**.
+3. Enter emails and assign roles.
+
+**Further information**  
+1. https://docs.humansignal.com/guide/users
+","To invite people to your organization:
+
+1. Go to **Organization Settings → Members**.
+2. Click **Add Member** or **Invite**.
+3. Enter the email address of the person you want to invite.
+4. Select their role (Owner, Manager, Reviewer, or Annotator).
+5. Click **Send Invite**.
+
+The invited person will receive an email to join your organization.
+
+**Further information**
+1. [Manage users in Label Studio Enterprise](https://docs.humansignal.com/guide/manage_users)
+2. [Organization roles and permissions](https://docs.humansignal.com/guide/manage_users#Roles)","Instructs the user to navigate to the ""Organization"" page and click on ""Invite Members"" (Points: 10)","Provides this link to relevant documentation: ""https://docs.humansignal.com/guide/admin_user.html"" (Points: 5)",Provides a broken link or non-existant page. (Points: -5)
+3,how can I connect an external DB to Humansignal?,"You can connect an external DB by updating your Label Studio Enterprise configuration with your database’s connection details.
+Different storages have different connection configurations. The following types of storages are supported: 
+
+Amazon S3
+Amazon S3 with IAM role
+Google Cloud Storage
+Google Cloud Storage WIF Auth
+Microsoft Azure Blob Storage
+Microsoft Azure Blob Storage with Service Principal
+Databricks Files (UC Volumes)
+Redis database
+Local storage (on-prem only)
+
+For more details, please refer to our documentation.
+
+**Further information**  
+1. [External Storages](https://docs.humansignal.com/guide/storage.html)  ","Direct DB connections aren’t supported. Instead:
+
+1. Connect your DB-backed storage layer (S3/GCS/Azure) via **Cloud Storage**.
+2. Sync data into Label Studio.
+
+**Further information**  
+1. https://docs.humansignal.com/guide/storage
+","To connect an external database:
+
+1. Go to **Project Settings → Cloud Storage**.
+2. Click **Add Source Storage** or **Add Target Storage**.
+3. Select your storage type (Amazon S3, Google Cloud Storage, Azure Blob, or Redis).
+4. Configure your connection credentials and settings.
+5. Click **Add Storage** and then **Sync Storage** to import data.
+
+You can also use the API or SDK to push/pull data programmatically.
+
+**Further information**
+1. [Cloud storage integration](https://docs.humansignal.com/guide/storage)
+2. [Sync data from external storage](https://docs.humansignal.com/guide/storage#Sync-data-from-external-storage)",Informs the user that configuration requirements will depend on the type of external storage. (Points: 10),"Provides this link to relevant documantation: ""https://docs.humansignal.com/guide/storage.html"" (Points: 5)",Provides a broken link or non-existant page. (Points: -5)
+4,"I don't see a button called ""action"" in data manager. Where is it?","The ""Actions"" button appears in the Data Manager’s toolbar only after you select one or more tasks. It’s added if your role has bulk action permissions. So, simply select some tasks via their checkboxes, and the ""Actions"" dropdown should become visible.
+
+**Further information**  
+1. [Project settings - Review section](https://docs.humansignal.com/guide/project_settings_lse.html)  
+2. [Data Manager Reference](https://docs.humansignal.com/guide/manage_data.html)","In Enterprise, the old **Action** button is now called **Bulk Actions** in the Data Manager toolbar.
+
+**Further information**  
+1. https://docs.humansignal.com/guide/data_manager
+","The **Actions** button appears when you select tasks:
+
+1. Go to your project's **Data Manager**.
+2. Use the checkboxes on the left to select one or more tasks.
+3. The **Actions** button will appear in the toolbar at the top.
+4. Click **Actions** to see bulk operations (delete, assign, export, etc.).
+
+> The Actions button is only visible when tasks are selected.
+
+**Further information**
+1. [Data Manager overview](https://docs.humansignal.com/guide/data_manager)
+2. [Manage data in Label Studio](https://docs.humansignal.com/guide/manage_data)","Informs the user that the ""Actions"" button is a dropdown that appears after tasks are selected. (Points: 10)","Informs the user that the ""Actions"" button only shows up for certain roles. (Points: 5)",Provides a broken link or non-existant page. (Points: -5)
+5,How to get api key?,"To retrieve your API key in Label Studio Enterprise, click your user icon in the upper-right corner, select **Account & Settings**, and find either your ""Legacy Token"" or ""Personal Access Token"", depending on your needs.
+
+**Further information**  
+1. [Access tokens](https://docs.humansignal.com/guide/access_tokens)","To get your API key:
+
+1. Click your profile icon.
+2. Go to **Account & Settings → API Key**.
+
+**Further information**  
+1. https://docs.humansignal.com/guide/api_key
+","To get your API key:
+
+1. Click on your avatar/profile picture in the top right.
+2. Go to **Account Settings** or **Account & Settings**.
+3. Navigate to the **Access Token** section.
+4. Click **Create New Token** or copy your existing token.
+5. Store your token securely.
+
+You can also automate operations using this token with the SDK or API.
+
+**Further information**
+1. [API authentication](https://docs.humansignal.com/guide/api)
+2. [Label Studio API documentation](https://labelstud.io/api)","Instructs the user to first click on their user icon, then click on ""Account & Settings"", and finally select ""Legacy Token"" or ""Personal Access Token"" depending on their needs. (Points: 10)","Provides this link to relevant documantation: ""https://docs.humansignal.com/guide/access_tokens"" (Points: 5)",Provides a broken link or non-existant page. (Points: -5)
+6,Where can I see the billing info on my account?,"You can view your billing info by clicking the hamburger menu on the left, selecting **Organization**, and then clicking **Usage & License**. This page displays your subscription details, usage, and billing history.
+
+**Further information**  
+1. [Billing & License Guide](https://docs.humansignal.com/guide/admin_usage)  
+2. [User Account Settings](https://docs.humansignal.com/guide/user_account.html)","Billing is located under:
+
+1. **Organization → Billing** (SaaS only).
+For On‑Prem: ask your admin.
+
+**Further information**  
+1. https://docs.humansignal.com/guide/billing
+","To view billing information:
+
+1. Go to **Organization Settings** (click the gear icon or your organization name).
+2. Navigate to **Billing** in the left sidebar.
+3. View your subscription details, usage, invoices, and payment methods.
+
+> Note: You need Owner or Manager role to access billing information.
+
+**Further information**
+1. [Billing and subscription management](https://docs.humansignal.com/guide/billing)
+2. [Organization settings](https://docs.humansignal.com/guide/organization)","Instructs the user to navigate to ""Organization"" then click into ""Usage & License"". (Points: 10) ","Provides this link to relevant documantation: ""https://docs.humansignal.com/guide/admin_usage"" (Points: 5)",Provides a broken link or non-existant page. (Points: -5)
+7,how can i add members to organization?,"*To add members to your organization:*
+
+1. Click the ☰ menu in the upper-left and select **Organization**.  
+2. Click **Invite Members**.  
+3. Choose between:  
+   - **Invite link**: copy or reset the URL and share it.  
+   - **Invite via email**: enter comma-separated addresses, choose a role, and send.  
+4. Invited users register and appear as _Pending_.  
+5. (Optional) Under **Organization → Members**, select a user to change their role.
+
+**Further information**
+
+1. https://docs.humansignal.com/guide/admin_user.html","To add members:
+
+1. Go to **Organization → People → Invite**.
+2. Enter email + role.
+
+**Further information**  
+1. https://docs.humansignal.com/guide/users
+","To add members to your organization:
+
+1. Go to **Organization Settings → Members**.
+2. Click **Add Member** or **Invite**.
+3. Enter the person's email address.
+4. Select their role (Owner, Manager, Reviewer, or Annotator).
+5. Click **Send Invite**.
+
+The member will receive an email invitation to join your organization.
+
+**Further information**
+1. [Manage users in Label Studio Enterprise](https://docs.humansignal.com/guide/manage_users)
+2. [Organization member management](https://docs.humansignal.com/guide/manage_users#Add-users)","Instructs the user to navigate to the ""Organization"" page and click on ""Invite Members"" (Points: 10)","Provides this link to relevant documentation: ""https://docs.humansignal.com/guide/admin_user.html"" (Points: 5)",Provides a broken link or non-existant page. (Points: -5)
+8,"I want to import labelled projects from open source to enterprise, how can I do it","You can migrate OS→Enterprise via UI or SDK:
+
+1. In your Community project go to Project → Data Manager → Export and download the JSON (tasks + annotations).  
+2. Copy your labeling-interface XML from Project → Settings → Labeling Interface.  
+3. In Enterprise create a new project, paste the XML, then Data Manager → Import and upload the JSON.  
+4. Sync or copy your media (local/cloud storage).  
+5. Or automate with the migrate_ls_to_ls script in the Label Studio SDK.
+
+For more help, please reach out to Label Studio support or your customer success representative.
+
+**Further information**  
+1. https://labelstud.io/guide/data_manager.html#Export-Annotations  
+2. https://labelstud.io/guide/project-setup.html#Labeling-Interface  
+3. https://labelstud.io/guide/data_manager.html#Import  
+4. https://github.com/heartexlabs/label-studio-sdk/tree/master/examples/migrate_ls_to_ls","To migrate annotated projects from OSS:
+
+1. Export your project as **Label Studio JSON** in OSS.
+2. In Enterprise, go to **Data Import** and upload the same JSON.
+
+**Further information**  
+1. https://docs.humansignal.com/guide/export  
+2. https://docs.humansignal.com/guide/import
+","To migrate projects from Open Source to Enterprise:
+
+1. In your Open Source instance, go to **Project Settings → Export**.
+2. Export your project (choose JSON snapshot with annotations).
+3. In Label Studio Enterprise, create a new project with the same labeling configuration.
+4. Go to **Import** and upload the exported JSON file.
+5. Verify that annotations are imported correctly.
+
+> Make sure your labeling configs match between both instances.
+
+**Further information**
+1. [Export annotations and data](https://docs.humansignal.com/guide/export)
+2. [Import data to Label Studio](https://docs.humansignal.com/guide/tasks)",Informs the user that they can export Label Studio projects via UI or SDK. (Points: 10),Informs the user to reach out to Label Studio support team if they need any help. (Points: 10),Provides a broken link or non-existant page. (Points: -5)
+9,how do I add members to project,"**Steps to add members to a project**  
+1. Open your project and click **Settings** → **Members**.  
+2. Search for users in your organization.  
+3. Select checkboxes and click `>` to add (or `<` to remove).  
+4. Optionally assign each user a project role (Annotator or Reviewer).  
+5. Click **Save**.  
+
+**Further information**  
+1. Add members to a project: https://docs.humansignal.com/guide/setup_project.html#add-members-to-a-project  
+2. Manage workspace membership (inherits to projects): https://docs.humansignal.com/guide/workspaces.html#Add-or-remove-workspace-members","To add members to a project:
+
+1. Open the project.
+2. Go to **Settings → People**.
+3. Click **Add Member** and assign a role.
+
+**Further information**  
+1. https://docs.humansignal.com/guide/permissions
+","To add members to a project:
+
+1. Open your project and go to **Settings → Members**.
+2. Click **Add Member**.
+3. Select users from your organization.
+4. Assign their project role (Manager, Reviewer, or Annotator).
+5. Click **Save** or **Add**.
+
+You can also use the SDK:
+
+```python
+from label_studio_sdk import LabelStudio
+ls = LabelStudio(base_url=URL, api_key=KEY)
+ls.project.add_member(project_id, user_id, role='annotator')
+```
+
+**Further information**
+1. [Project member management](https://docs.humansignal.com/guide/manage_users#Project-members)
+2. [Label Studio SDK](https://labelstud.io/sdk)","Instructs the user to navigate to the project's ""Settings"" page and click on ""Members"" to add users in the organization. (Points: 10)","Provides at least one of these relevant links: ""https://docs.humansignal.com/guide/setup_project.html"" or "" https://docs.humansignal.com/guide/workspaces"" (Points: 5)",Provides a broken link or non-existant page. (Points: -5)
+10,"i have a question for humansignal. i am a reviewer. when i accept a fix an annotation, how does that impact the agreement and review scores for the annotator? if i am fixing it, i would still want it to appear that this was initially a mistake","When you click **Fix + Accept**, Label Studio records a review with `fixed_annotation_history`.  
+- _Review Score_ treats Fix + Accept as an accepted review (accepted = true), so it counts toward the reviewer’s acceptance rate.  
+- _Performance Score_ instead sums the actual review scores: for Fix + Accept it uses the matching score between your fixed result and the original annotation (via `ReviewStats.score`), which will be < 1 if you corrected a mistake.  
+
+**Further information**  
+1. Performance Score details: [Release Notes 2.15.0](https://docs.humansignal.com/guide/release_notes/onprem/2.15.0.html)  
+2. How Fix + Accept is scored: [get_review_score implementation](Label Studio code  
+3. Review vs Performance Score overview: [Annotator performance dashboard](https://docs.humansignal.com/guide/dashboard_annotator.html)","Reviewer logic:
+
+- When you fix an annotation, the annotator’s original mistake is still recorded.
+- Agreement scores use the original (pre‑fix) label.
+- The corrected label becomes the new reference.
+
+**Further information**  
+1. https://docs.humansignal.com/guide/review
+","When you fix and accept an annotation, the scoring impact depends on your workflow:
+
+**To track the initial mistake:**
+1. First, **reject** the annotation with a reason (this logs the error).
+2. Then create a corrected annotation or reassign the task.
+
+**Direct fixing:**
+- Accepting a fixed annotation may not automatically flag it as incorrect in agreement metrics.
+- The corrected version becomes the ground truth.
+
+For detailed scoring behavior and best practices, contact our support team at support.humansignal.com.
+
+**Further information**
+1. [Review workflow](https://docs.humansignal.com/guide/quality)
+2. [Agreement metrics](https://docs.humansignal.com/guide/stats)","Mentions the ""Performance Score"" metric. (Points: 10)","Provides a link to performance dashboards: ""https://docs.humansignal.com/guide/dashboard_annotator.html"" (Points: 10)",Provides a broken link or non-existant page. (Points: -5)

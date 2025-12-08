@@ -1,0 +1,81 @@
+question_id,question,AI_Response
+1,How can I import data to my project?,"You can import data either via the UI or programmatically. In the UI, open the Data Manager and click the “Import” button to upload files or specify a URL. Alternatively, use the Label Studio SDK’s import_tasks() method or the REST API endpoint (/api/projects/{id}/import) to import data.
+
+**Further information**
+1. [Importing tasks guide](https://docs.humansignal.com/guide/tasks.html)
+2. [Label Studio API import endpoint](https://labelstud.io/api#operation/api_projects_import_create)
+3. [LS SDK import example](https://github.com/HumanSignal/label-studio-sdk/tree/master/examples/import_data/import_from_json.md)"
+2,How can I invite people to my organization?,"You can invite people by opening your Organization page (via the hamburger menu) and clicking **Invite Members**. Then, either copy your unique invite link to share with new users or send them an email invite directly. After they sign up, assign them a role to activate their access.
+
+**Further information**  
+1. [Add and invite users to Label Studio Enterprise](https://docs.humansignal.com/guide/admin_user.html)  
+2. [Sign up guide](https://docs.humansignal.com/guide/signup.html)"
+3,how can I connect an external DB to Humansignal?,"You can connect an external DB by updating your Label Studio Enterprise configuration with your database’s connection details. Here’s how:
+
+1. Set external DB environment variables (e.g. HOST, PORT, USER, PASSWORD, NAME).
+2. Update your deployment configuration (or Kubernetes values) to use these settings.
+3. Run migrations and restart your instance.
+
+For more details, please refer to our documentation.
+
+**Further information**  
+1. [PostgreSQL Database Setup](https://docs.humansignal.com/guide/storedata.html#PostgreSQL-database)  
+2. [Troubleshooting Import, Export, & Storage](https://support.humansignal.com/hc/en-us/sections/16982163062029-Import-Export-Storage)"
+4,"I don't see a button called ""action"" in data manager. Where is it?","The ""Actions"" button appears in the Data Manager’s toolbar only after you select one or more tasks. It’s added if your role has bulk action permissions (which you do as OWNER). So, simply select some tasks via their checkboxes, and the ""Actions"" dropdown should become visible.
+
+**Further information**  
+1. [Project settings - Review section](https://docs.humansignal.com/guide/project_settings_lse.html)  
+2. [Data Manager Reference](https://docs.humansignal.com/guide/manage_data.html)"
+5,How to get api key?,"To retrieve your API key in Label Studio Enterprise, click your user icon in the upper-right corner, select **Account & Settings**, and copy the displayed access token.
+
+**Further information**  
+1. [API Reference for Label Studio](https://docs.humansignal.com/guide/api.html)"
+6,Where can I see the billing info on my account?,"You can view your billing info by clicking the hamburger menu on the left, selecting **Organization**, and then clicking **Billing & Usage**. This page displays your subscription details, usage, and billing history.
+
+**Further information**  
+1. [Billing & Usage Guide](https://docs.humansignal.com/guide/billing.html)  
+2. [User Account Settings](https://docs.humansignal.com/guide/user_account.html)"
+7,how can i add members to organization?,"*To add members to your organization:*
+
+1. Click the ☰ menu in the upper-left and select **Organization**.  
+2. Click **Invite People**.  
+3. Choose between:  
+   - **Invite link**: copy or reset the URL and share it.  
+   - **Invite via email**: enter comma-separated addresses, choose a role, and send.  
+4. Invited users register and appear as _Pending_.  
+5. (Optional) Under **Organization → Members**, select a user to change their role.
+
+**Further information**
+
+1. https://docs.humansignal.com/guide/admin_user.html"
+8,"I want to import labelled projects from open source to enterprise, how can I do it","You can migrate OS→Enterprise via UI or SDK:
+
+1. In your Community project go to Project → Data Manager → Export and download the JSON (tasks + annotations).  
+2. Copy your labeling-interface XML from Project → Settings → Labeling Interface.  
+3. In Enterprise create a new project, paste the XML, then Data Manager → Import and upload the JSON.  
+4. Sync or copy your media (local/cloud storage).  
+5. Or automate with the migrate_ls_to_ls script in the Label Studio SDK.
+
+**Further information**  
+1. https://labelstud.io/guide/data_manager.html#Export-Annotations  
+2. https://labelstud.io/guide/project-setup.html#Labeling-Interface  
+3. https://labelstud.io/guide/data_manager.html#Import  
+4. https://github.com/heartexlabs/label-studio-sdk/tree/master/examples/migrate_ls_to_ls"
+9,how do I add members to project,"**Steps to add members to a project**  
+1. Open your project and click **Settings** → **Members**.  
+2. Search for users in your organization.  
+3. Select checkboxes and click `>` to add (or `<` to remove).  
+4. Optionally assign each user a project role (Annotator or Reviewer).  
+5. Click **Save**.  
+
+**Further information**  
+1. Add members to a project: https://docs.humansignal.com/guide/setup_project.html#add-members-to-a-project  
+2. Manage workspace membership (inherits to projects): https://docs.humansignal.com/guide/workspaces.html#Add-or-remove-workspace-members"
+10,"i have a question for humansignal. i am a reviewer. when i accept a fix an annotation, how does that impact the agreement and review scores for the annotator? if i am fixing it, i would still want it to appear that this was initially a mistake","When you click **Fix + Accept**, Label Studio records a review with `fixed_annotation_history`.  
+- _Review Score_ treats Fix + Accept as an accepted review (accepted = true), so it counts toward the reviewer’s acceptance rate.  
+- _Performance Score_ instead sums the actual review scores: for Fix + Accept it uses the matching score between your fixed result and the original annotation (via `ReviewStats.score`), which will be < 1 if you corrected a mistake.  
+
+**Further information**  
+1. Performance Score details: [Release Notes 2.15.0](https://docs.humansignal.com/guide/release_notes/onprem/2.15.0.html)  
+2. How Fix + Accept is scored: [get_review_score implementation](Label Studio code  
+3. Review vs Performance Score overview: [Annotator performance dashboard](https://docs.humansignal.com/guide/dashboard_annotator.html)"
