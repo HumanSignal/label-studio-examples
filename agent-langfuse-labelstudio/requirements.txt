@@ -1,0 +1,24 @@
+# Core dependencies
+fastapi>=0.109.0
+uvicorn>=0.27.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# PDF processing
+pymupdf>=1.23.0
+
+# LLM and Agent
+langchain-core>=0.1.0
+langchain-openai>=0.0.5
+langgraph>=0.0.20
+
+# Observability
+langfuse>=2.0.0
+
+# Label Studio
+label-studio-sdk>=0.0.34
+
+# Google Search
+google-api-python-client>=2.0.0
+
