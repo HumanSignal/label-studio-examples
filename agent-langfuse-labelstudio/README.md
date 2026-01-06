@@ -1,38 +1,11 @@
-# PDF Agent: Mortgage Offer Analyzer
+# Example of using Langfuse and Label Studio
 
-A LangGraph-powered agent that analyzes mortgage documents and compares them to market conditions, with integrated observability (Langfuse) and expert error analysis (Label Studio).
+A LangGraph-powered agent that analyzes financial PDF documents (mortgage simulations) and compares them to market conditions, with integrated observability (Langfuse) and expert error analysis (Label Studio).
 
-## The Two-Layer Evaluation Strategy
+## The Two-Phase Observability & Evaluation Strategy
 
-This project demonstrates a powerful pattern for AI agent quality assurance:
+![Langfuse and Label Studio Integration](https://hs-sandbox-pub.s3.us-east-1.amazonaws.com/blogs-draft/Langfuse%2BLS.png)
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                         PDF Analysis Agent                          │
-└─────────────────────────┬───────────────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                     LANGFUSE (Observability)                        │
-│                                                                     │
-│   Monitor what you KNOW about:                                      │
-│   • Latency, token usage, cost                                      │
-│   • Known failure patterns                                          │
-│   • Tool call sequences                                             │
-│   • Structured output parsing success                               │
-└─────────────────────────┬───────────────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                   LABEL STUDIO (Error Analysis)                     │
-│                                                                     │
-│   Discover what you DON'T know yet:                                 │
-│   • Novel failure modes                                             │
-│   • Edge cases in document parsing                                  │
-│   • Incorrect market comparisons                                    │
-│   • Expert corrections → future training data                       │
-└─────────────────────────────────────────────────────────────────────┘
-```
 
 ### Why Both?
 
