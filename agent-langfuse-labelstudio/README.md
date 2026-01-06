@@ -77,12 +77,11 @@ Click "Annotate in Label Studio" to:
 
 ## Project Structure
 
-```
-pdf-agent/
-├── server.py           # FastAPI web interface
-├── run_agent.py        # LangGraph Example agent + Langfuse tracing
-├── export_traces.py    # Label Studio export utilities
-```
+| File | Description |
+|------|-------------|
+| [`server.py`](https://github.com/HumanSignal/label-studio-examples/blob/main/agent-langfuse-labelstudio/server.py) | FastAPI web interface |
+| [`run_agent.py`](https://github.com/HumanSignal/label-studio-examples/blob/main/agent-langfuse-labelstudio/run_agent.py) | LangGraph Example agent + Langfuse tracing |
+| [`export_traces.py`](https://github.com/HumanSignal/label-studio-examples/blob/main/agent-langfuse-labelstudio/export_traces.py) | Label Studio export utilities |
 
 ## Environment Variables
 
